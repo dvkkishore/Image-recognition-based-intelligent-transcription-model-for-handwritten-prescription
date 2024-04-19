@@ -1,0 +1,2 @@
+2024-03-18 23:20:22,073 - tensorflow - WARNING - From D:\03_handwriting_recognition\env\Lib\site-packages\tf2onnx\tf_loader.py:72: The name tf.train.import_meta_graph is deprecated. Please use tf.compat.v1.train.import_meta_graph instead.
+

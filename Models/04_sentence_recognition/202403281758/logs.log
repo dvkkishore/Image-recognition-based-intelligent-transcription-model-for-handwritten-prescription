@@ -1,0 +1,4 @@
+2024-03-28 17:58:24,716 - tensorflow - WARNING - From D:\Image recognition based intelligent transcription model for handwritten prescription\env\Lib\site-packages\tf2onnx\tf_loader.py:72: The name tf.train.import_meta_graph is deprecated. Please use tf.compat.v1.train.import_meta_graph instead.
+
+2024-03-28 17:58:47,890 - tensorflow - WARNING - From D:\Image recognition based intelligent transcription model for handwritten prescription\env\Lib\site-packages\tf2onnx\tf_loader.py:72: The name tf.train.import_meta_graph is deprecated. Please use tf.compat.v1.train.import_meta_graph instead.
+

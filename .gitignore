@@ -1,0 +1,5 @@
+.vscode
+_pycache_
+env
+Datasets
+app/node_modules

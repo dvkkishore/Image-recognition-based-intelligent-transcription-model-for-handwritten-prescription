@@ -1,0 +1,12 @@
+2024-03-23 00:07:12,470 - tensorflow - WARNING - From D:\03_handwriting_recognition\env\Lib\site-packages\tf2onnx\tf_loader.py:72: The name tf.train.import_meta_graph is deprecated. Please use tf.compat.v1.train.import_meta_graph instead.
+
+2024-03-23 00:07:17,066 - tensorflow - WARNING - From D:\03_handwriting_recognition\env\Lib\site-packages\keras\src\legacy\backend.py:666: The name tf.nn.ctc_loss is deprecated. Please use tf.compat.v1.nn.ctc_loss instead.
+
+2024-03-23 00:13:43,687 - ImageReader - WARNING - Image Datasets\IAM_Words\words\r06\r06-022\r06-022-03-05.png could not be read, returning None.
+2024-03-23 00:13:43,687 - DataProvider - WARNING - Data or annotation is None, marking for removal on epoch end.
+2024-03-23 00:13:43,689 - DataProvider - WARNING - Data or annotation is None, skipping.
+2024-03-23 00:32:46,074 - ImageReader - WARNING - Image Datasets\IAM_Words\words\a01\a01-117\a01-117-05-02.png could not be read, returning None.
+2024-03-23 00:32:46,075 - DataProvider - WARNING - Data or annotation is None, marking for removal on epoch end.
+2024-03-23 00:32:46,080 - DataProvider - WARNING - Data or annotation is None, skipping.
+2024-03-23 00:48:46,262 - DataProvider - WARNING - Removing ['Datasets\\IAM_Words\\words\\r06\\r06-022\\r06-022-03-05.png', 'more'] from dataset.
+2024-03-23 00:48:46,278 - DataProvider - WARNING - Removing ['Datasets\\IAM_Words\\words\\a01\\a01-117\\a01-117-05-02.png', 'Powell'] from dataset.

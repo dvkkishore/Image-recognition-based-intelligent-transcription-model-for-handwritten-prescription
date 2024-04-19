@@ -1,0 +1,10 @@
+2024-03-19 23:20:31,857 - tensorflow - WARNING - From D:\03_handwriting_recognition\env\Lib\site-packages\tf2onnx\tf_loader.py:72: The name tf.train.import_meta_graph is deprecated. Please use tf.compat.v1.train.import_meta_graph instead.
+
+2024-03-19 23:20:35,473 - tensorflow - WARNING - From D:\03_handwriting_recognition\env\Lib\site-packages\keras\src\legacy\backend.py:666: The name tf.nn.ctc_loss is deprecated. Please use tf.compat.v1.nn.ctc_loss instead.
+
+2024-03-19 23:25:08,497 - ImageReader - WARNING - Image Datasets\IAM_Words\words\r06\r06-022\r06-022-03-05.png could not be read, returning None.
+2024-03-19 23:25:08,498 - DataProvider - WARNING - Data or annotation is None, marking for removal on epoch end.
+2024-03-19 23:25:08,500 - DataProvider - WARNING - Data or annotation is None, skipping.
+2024-03-19 23:30:43,677 - ImageReader - WARNING - Image Datasets\IAM_Words\words\a01\a01-117\a01-117-05-02.png could not be read, returning None.
+2024-03-19 23:30:43,677 - DataProvider - WARNING - Data or annotation is None, marking for removal on epoch end.
+2024-03-19 23:30:43,677 - DataProvider - WARNING - Data or annotation is None, skipping.
