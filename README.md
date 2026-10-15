@@ -22,6 +22,8 @@ IAM handwriting data (externally obtained, not supplied here)
 - `Word Recognition/` retains an earlier recognition implementation and tutorial-influenced material. See its existing README for the **PyLessons** tutorial source and IAM attribution.
 - `Models/` contains historical experiments, checkpoint files and logs, not a single verified final benchmark.
 
+**Historical artifact mismatch:** The API currently selects `Models/03_handwriting_recognition/202301131202`, whose checked-in `val.csv` references `Datasets/IAM_Sentences/` (sentence samples). The current `train.py` instead reads `Datasets/IAM/ascii/words.txt` and `Datasets/IAM/words/`. Consequently, the present training script and the selected historical checkpoint cannot be assumed to describe the same experiment or yield reproducible results. The other saved `202301111911` checkpoint references `Datasets/IAM_Words/` in its validation CSV.
+
 ## Getting started
 
 ### Prerequisites
@@ -71,13 +73,28 @@ cd app && npm ci && npm run build
 
 The PR's CI executes Flask upload validation tests with an injected fake predictor, plus a frontend build. It **does not run the real ONNX model, rerun training, validate CER/WER, or check actual medical prescriptions**.
 
+## Reproducible evaluation entry point
+
+When you have lawfully obtained the **exact images referenced by the historical validation CSV** and installed compatible ONNX dependencies, run:
+
+```bash
+python evaluate.py \
+  --config Models/03_handwriting_recognition/202301131202/configs.yaml \
+  --manifest Models/03_handwriting_recognition/202301131202/val.csv \
+  --data-root .
+```
+
+`--data-root` must contain the `Datasets/IAM_Sentences/` directory referenced by that manifest. `evaluate.py` computes micro-averaged character error rate (CER) and word error rate (WER) using Levenshtein distance, alongside sample/error counts and the model/manifest paths. The evaluation **fails on missing or undecodable images** instead of silently dropping them. It does not download data or save image contents or per-sample predictions.
+
+**No evaluation numbers are claimed by this PR:** the validation images and consistent machine environment were not available for a complete checkpoint evaluation. The offline tests check the metric math and manifest parsing only.
+
 ## Evidence and evaluation
 
 **Verified from source:** the architecture, model-artifact locations, data-loading paths, and existence of metric/loss computation.
 
 **Not verified in this repository audit:** reliable held-out CER/WER values, cross-writer generalization, prescription-domain performance, latency/memory on a target device, consent/rights for every retained sample, and any clinical safety claim. Historic log entries should be analyzed and tied to specific dataset splits/checkpoint SHAs before publishing any numeric results.
 
-For a credible portfolio study, compare word/character error rates on a documented held-out IAM split, report number of samples and preprocessing, archive a clean evaluation script, then separately evaluate real prescription handwriting with properly consented data and domain-specific error analysis. Do not claim clinical performance based on IAM metrics.
+For a credible portfolio study, run and archive the included evaluator on a documented held-out IAM split, report number of samples and preprocessing, then separately evaluate real prescription handwriting with properly consented data and domain-specific error analysis. Do not claim clinical performance based on IAM metrics.
 
 ## Authorship and data
 
