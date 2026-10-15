@@ -1,9 +1,6 @@
 # Handwriting OCR with TensorFlow and ONNX
 
-> **At a glance:** A handwriting-recognition research prototype combining convolutional features, bidirectional LSTMs, CTC decoding and ONNX inference, with a Flask/React demonstration UI. **Dataset evidenced:** IAM handwriting. **Important:** prescription-specific training or clinical accuracy is **not** established.
-
-**Explore:** [Architecture](#project-architecture) · [Run the demo](#run-the-local-demo) · [Evaluation](#reproducible-evaluation-entry-point) · [Case study](docs/CASE_STUDY.md)
-
+**Documentation:** [Architecture](#project-architecture) · [Local demo](#run-the-local-demo) · [Evaluation](#reproducible-evaluation-entry-point) · [Technical overview](docs/TECHNICAL_OVERVIEW.md)
 
 An experimental **handwritten text recognition** repository, including training code, historic model artifacts, a Flask inference endpoint and a React/Vite upload interface. The repository name refers to medical prescriptions, but the inspected training script reads **IAM handwritten word samples**. The provided materials do not establish prescription-specific training, clinical accuracy, or safe use with medication instructions.
 
