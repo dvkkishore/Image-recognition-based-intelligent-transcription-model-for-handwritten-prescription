@@ -3,3 +3,11 @@ _pycache_
 env
 Datasets
 app/node_modules
+
+# Local Python caches, secrets and training output
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+Models/*/20*/logs/

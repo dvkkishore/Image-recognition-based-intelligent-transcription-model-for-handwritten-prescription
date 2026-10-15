@@ -1,0 +1,37 @@
+name: OCR demo offline checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  api-contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install lightweight demo test dependencies
+        run: python -m pip install Flask==3.0.3 flask-cors==4.0.1 numpy==1.26.4 opencv-python-headless==4.10.0.84
+      - name: Run tests without loading ONNX or TensorFlow
+        run: python -m unittest discover -s tests -v
+      - name: Compile Python scripts
+        run: python -m compileall -q app.py inferenceModel.py model.py train.py
+
+  frontend-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - name: Install pinned frontend dependencies
+        run: npm ci
+      - name: Build demo interface
+        run: npm run build
