@@ -4,7 +4,7 @@
 
 Handwritten text has variable word lengths, inconsistent stroke forms and difficult character boundaries. This project explores converting images of handwriting into text using a sequence-recognition model instead of hand-coding character segmentation.
 
-Although the repository's long-standing name mentions medical prescriptions, the source-verified training workflow uses **IAM handwriting**. That distinction matters: an IAM recognizer is not automatically trustworthy for medicine names or dosages.
+Although the project name mentions medical prescriptions, the training workflow uses **IAM handwriting**. Performance on this dataset does not establish reliable recognition of medicine names or dosages.
 
 ## System architecture
 
