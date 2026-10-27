@@ -73,7 +73,7 @@ python -m unittest discover -s tests -v
 cd app && npm ci && npm run build
 ```
 
-The PR's CI executes Flask upload validation tests with an injected fake predictor, plus a frontend build. It **does not run the real ONNX model, rerun training, validate CER/WER, or check actual medical prescriptions**.
+The repository's CI runs Flask upload-validation tests with an injected fake predictor, plus a frontend build. It **does not run the real ONNX model, rerun training, validate CER/WER, or check actual medical prescriptions**.
 
 ## Reproducible evaluation entry point
 
@@ -88,15 +88,15 @@ python evaluate.py \
 
 `--data-root` must contain the `Datasets/IAM_Sentences/` directory referenced by that manifest. `evaluate.py` computes micro-averaged character error rate (CER) and word error rate (WER) using Levenshtein distance, alongside sample/error counts and the model/manifest paths. The evaluation **fails on missing or undecodable images** instead of silently dropping them. It does not download data or save image contents or per-sample predictions.
 
-**No evaluation numbers are claimed by this PR:** the validation images and consistent machine environment were not available for a complete checkpoint evaluation. The offline tests check the metric math and manifest parsing only.
+**No verified checkpoint-evaluation numbers are reported here:** the validation images and a consistent machine environment were not available for a complete evaluation. The offline tests check the metric math and manifest parsing only.
 
 ## Evidence and evaluation
 
 **Verified from source:** the architecture, model-artifact locations, data-loading paths, and existence of metric/loss computation.
 
-**Not verified in this repository audit:** reliable held-out CER/WER values, cross-writer generalization, prescription-domain performance, latency/memory on a target device, consent/rights for every retained sample, and any clinical safety claim. Historic log entries should be analyzed and tied to specific dataset splits/checkpoint SHAs before publishing any numeric results.
+**Not established by the available evidence:** reliable held-out CER/WER values, cross-writer generalization, prescription-domain performance, latency/memory on a target device, consent/rights for every retained sample, and any clinical safety claim. Historic log entries should be analyzed and tied to specific dataset splits/checkpoint SHAs before publishing any numeric results.
 
-For a credible portfolio study, run and archive the included evaluator on a documented held-out IAM split, report number of samples and preprocessing, then separately evaluate real prescription handwriting with properly consented data and domain-specific error analysis. Do not claim clinical performance based on IAM metrics.
+For reproducible evaluation, run and archive the included evaluator on a documented held-out IAM split, recording sample counts, preprocessing, checkpoint identity and metrics. Prescription-domain assessment would require separate, properly consented data and domain-specific error analysis. Do not claim clinical performance based on IAM metrics.
 
 ## Authorship and data
 
