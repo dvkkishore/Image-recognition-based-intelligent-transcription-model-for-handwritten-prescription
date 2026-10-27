@@ -2,7 +2,7 @@
 
 **Documentation:** [Architecture](#project-architecture) · [Local demo](#run-the-local-demo) · [Evaluation](#reproducible-evaluation-entry-point) · [Technical overview](docs/TECHNICAL_OVERVIEW.md)
 
-An experimental **handwritten text recognition** repository, including training code, historic model artifacts, a Flask inference endpoint and a React/Vite upload interface. The repository name refers to medical prescriptions, but the inspected training script reads **IAM handwritten word samples**. The provided materials do not establish prescription-specific training, clinical accuracy, or safe use with medication instructions.
+An experimental **handwritten-text recognition** project with training code, historical model artifacts, a Flask inference API and a React/Vite upload interface. Although the project name refers to medical prescriptions, `train.py` uses **IAM handwritten word samples**. Prescription-specific training, clinical accuracy and safe interpretation of medication instructions have not been established.
 
 > **Not a medical device or prescribing aid.** Never use the generated text to identify, dispense or dose medication. A recognition error may change a drug name, strength or instruction.
 
@@ -73,7 +73,7 @@ python -m unittest discover -s tests -v
 cd app && npm ci && npm run build
 ```
 
-The PR's CI executes Flask upload validation tests with an injected fake predictor, plus a frontend build. It **does not run the real ONNX model, rerun training, validate CER/WER, or check actual medical prescriptions**.
+The repository's CI runs Flask upload-validation tests with an injected fake predictor and builds the frontend. It **does not run the real ONNX model, rerun training, validate CER/WER, or evaluate medical prescriptions**.
 
 ## Reproducible evaluation entry point
 
@@ -88,15 +88,15 @@ python evaluate.py \
 
 `--data-root` must contain the `Datasets/IAM_Sentences/` directory referenced by that manifest. `evaluate.py` computes micro-averaged character error rate (CER) and word error rate (WER) using Levenshtein distance, alongside sample/error counts and the model/manifest paths. The evaluation **fails on missing or undecodable images** instead of silently dropping them. It does not download data or save image contents or per-sample predictions.
 
-**No evaluation numbers are claimed by this PR:** the validation images and consistent machine environment were not available for a complete checkpoint evaluation. The offline tests check the metric math and manifest parsing only.
+**No complete checkpoint-evaluation results are available here.** The original validation images and a compatible execution environment are needed to reproduce them. The offline tests cover metric calculations and manifest parsing only.
 
 ## Evidence and evaluation
 
 **Verified from source:** the architecture, model-artifact locations, data-loading paths, and existence of metric/loss computation.
 
-**Not verified in this repository audit:** reliable held-out CER/WER values, cross-writer generalization, prescription-domain performance, latency/memory on a target device, consent/rights for every retained sample, and any clinical safety claim. Historic log entries should be analyzed and tied to specific dataset splits/checkpoint SHAs before publishing any numeric results.
+**Not established by the current evidence:** held-out CER/WER values for the selected checkpoint, cross-writer generalization, prescription-domain performance, device latency and memory use, redistribution rights for all retained samples, or clinical safety. Historic log entries should be analyzed and tied to specific dataset splits/checkpoint SHAs before publishing any numeric results.
 
-For a credible portfolio study, run and archive the included evaluator on a documented held-out IAM split, report number of samples and preprocessing, then separately evaluate real prescription handwriting with properly consented data and domain-specific error analysis. Do not claim clinical performance based on IAM metrics.
+For a reproducible evaluation, run the included evaluator on a documented held-out IAM split and record sample counts, preprocessing, checkpoint identity and error metrics. Any prescription-domain evaluation would require separately authorized data and domain-specific error analysis. IAM results alone do not establish clinical performance.
 
 ## Authorship and data
 
